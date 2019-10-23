@@ -69,39 +69,56 @@ test('increment button click increments counter display', () => {
 });
 
 test('render decrement button and click decrements counter display', () => {
-	
+
 	// init wrapper with state
-	let counter = 7;
+	const counter = 7;
 	const wrapper = setup(null, { counter });
-	
+
 	//find button check if exists and click
 	const decrementButton = findByTestAttr(wrapper, 'decrement-button');
 	expect(decrementButton).toHaveLength(1);
 	decrementButton.simulate('click');
-	
+
 	//find counter display and read text
 	const counterDisplay = findByTestAttr(wrapper, 'counter-display');
-	expect(counterDisplay.text()).toContain(counter -1);
-	
+	expect(counterDisplay.text()).toContain(counter - 1);
+
 });
 
 test('decrement never goes below 0', () => {
-	
+
 	// init wrapper with state
-	let counter = 0;
-	const wrapper = setup(null, {counter});
-	
+	const counter = 0;
+	const wrapper = setup(null, { counter });
+
 	//find button and click
 	const decrementButton = findByTestAttr(wrapper, 'decrement-button');
 	decrementButton.simulate('click');
-	
+
 	//find counter display and read text
-	const counterDisplay = findByTestAttr(wrapper,'counter-display');
+	const counterDisplay = findByTestAttr(wrapper, 'counter-display');
 	expect(counterDisplay.text()).toContain(0);
 });
 
 test('display error when try to decrement below zero', () => {
-	let counter = 0;
+	const counter = 0;
 	const wrapper = setup(null, { counter });
-	const errorDisplay = findByTestAttr(wrapper, 'error-display')
+
+	const decrementButton = findByTestAttr(wrapper, 'decrement-button');
+	decrementButton.simulate('click');
+
+	const errorDisplay = findByTestAttr(wrapper, 'error-display');
+	expect(errorDisplay).toHaveLength(1);
+});
+
+test('hide error after increment', () => {
+	const counter = 0;
+	const error = true;
+	const wrapper = setup(null, { counter, error });
+
+	const incrementButton = findByTestAttr(wrapper, 'increment-button');
+	incrementButton.simulate('click');
+
+	const errorDisplay = findByTestAttr(wrapper, 'error-display');
+	expect(errorDisplay).toHaveLength(0);
 });
