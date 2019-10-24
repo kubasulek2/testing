@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GuestWords = ({ guessedWords }) => {
+const GuessedWords = ({ guessedWords }) => {
 	let contents;
 	if (guessedWords.length === 0) {
 		contents = (
@@ -36,7 +36,7 @@ const GuestWords = ({ guessedWords }) => {
 		</div>
 	);
 };
-GuestWords.propTypes = {
+GuessedWords.propTypes = {
 	guessedWords: PropTypes.arrayOf(
 		PropTypes.shape({
 			guessedWord: PropTypes.string.isRequired,
@@ -45,4 +45,4 @@ GuestWords.propTypes = {
 	).isRequired
 };
 
-export default GuestWords;
+export default GuessedWords;
