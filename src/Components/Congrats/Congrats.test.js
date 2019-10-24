@@ -5,12 +5,14 @@ import { findByTestAttr, checkProps } from '../../test/testUtils';
 import Congrats from './Congrats';
 
 const defaultProps = { success: false };
+
 /**
  * Factory function for generating a ShallowWrapper for the Congrats component.
  * @function setup
  * @param {object} props - Component props specific for this setup.
  * @returns {ShallowWrapper}
  */
+
 const setup = (props = {}) => {
 	const setupProps = {...defaultProps, ...props};
 	return shallow(<Congrats {...setupProps} />);
