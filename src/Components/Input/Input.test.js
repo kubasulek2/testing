@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { findByTestAttr, stroreFactory } from '../../test/testUtils';
+import { findByTestAttr, storeFactory } from '../../test/testUtils';
 import Input from './Input';
 
 
-const defaultProps = { success: false };
+//const defaultProps = { success: false };
 
 /**
  * Factory function for generating a ShallowWrapper for the Congrats component.
@@ -14,7 +14,7 @@ const defaultProps = { success: false };
  */
 
 const setup = (initialState={}) => {
-	const store = stroreFactory(initialState);
+	const store = storeFactory(initialState);
 	const wrapper = shallow(<Input store={store}/>).dive().dive();
 	return wrapper;
 };
